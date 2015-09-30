@@ -15,7 +15,7 @@ module.exports = {
   loaders: [
     {
       test: /.*img\/icons.*\.svg$/,
-      loader: 'babel!grommet-icon!react-svg!svgo'
+      loader: 'babel!grommet-icon!svgo'
     }
   ]
 }
