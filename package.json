@@ -1,7 +1,7 @@
 {
-  "name": "react-svg-loader",
+  "name": "grommet-icon-loader",
   "version": "0.0.6",
-  "description": "Loads svg file as a react component",
+  "description": "Loads svg icons as a react component in Grommet",
   "main": "lib/index.js",
   "scripts": {
     "build": "babel src --out-dir lib --copy-files --loose-mode",
@@ -13,17 +13,17 @@
     "url": "git+https://github.com/boopathi/react-svg-loader.git"
   },
   "keywords": [
-    "react-svg-loader"
+    "grommet-icon-loader"
   ],
-  "bin": {
-    "svg2react": "./lib/cli.js"
-  },
-  "author": "boopathi",
+  "authors": [
+    "boopathi",
+    "alansouzati"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/boopathi/react-svg-loader/issues"
+    "url": "https://github.com/grommet/grommet-icon-loader/issues"
   },
-  "homepage": "https://github.com/boopathi/react-svg-loader#readme",
+  "homepage": "https://github.com/grommet/grommet-icon-loader#readme",
   "dependencies": {
     "xml2js": "~0.4.9",
     "xmlbuilder": "~2.6.4",

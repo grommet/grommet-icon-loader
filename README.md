@@ -1,23 +1,21 @@
-# react-svg-loader
+# grommet-icon-loader
 
-[![Build Status](https://travis-ci.org/boopathi/react-svg-loader.svg)](https://travis-ci.org/boopathi/react-svg-loader)
+Load SVG icons inside Grommet environment.
 
-## Install
+[![Build Status](https://travis-ci.org/grommet/grommet-icon-loader.svg)](https://travis-ci.org/grommet/grommet-icon-loader)
 
-```sh
-npm i react-svg-loader
-```
+### WORK IN PROGRESS
+
+This loader has been implemented based on the awesome [react-svg-loader](https://github.com/boopathi/react-svg-loader)
 
 ## Usage
-
-This outputs ES6+JSX code and to be used with `babel-loader`
 
 ```js
 module.exports = {
   loaders: [
     {
-      test: /\.svg$/,
-      loader: 'babel!react-svg'
+      test: /.*img\/icons.*\.svg$/,
+      loader: 'babel!grommet-icon!react-svg!svgo'
     }
   ]
 }
@@ -25,50 +23,71 @@ module.exports = {
 
 ### Output
 
-of react-svg-loader
+For the example input: 'src/img/icons/github.svg'
 
 ```js
-import React from 'react';
-export default class extends React.Component {
-  render() {
-    return <svg>
-      ...
-    </svg>;
+var React = require('react');
+var IntlMixin = require('grommet/mixins/GrommetIntlMixin');
+
+var Icon = React.createClass({
+
+  propTypes: {
+    a11yTitle: React.PropTypes.string,
+    a11yTitleId: React.PropTypes.string
+  },
+
+  mixins: [IntlMixin],
+
+  getDefaultProps: function () {
+    return {
+      a11yTitleId: 'github-title'
+    };
+  },
+
+  render: function() {
+    var className = 'control-icon control-icon-github';
+    if (this.props.className) {
+      className += ' ' + this.props.className;
+    }
+
+    var a11yTitle = this.getGrommetIntlMessage(
+      typeof this.props.a11yTitle !== "undefined" ?
+        this.props.a11yTitle : 'github');
+
+    return (
+      <svg className={className} width="48px" height="48px"
+        viewBox="0 0 48 48" version="1.1" aria-labelledby={this.props.a11yTitleId}>
+        <title id={this.props.a11yTitleId}>{a11yTitle}</title>
+        ...
+      </svg>
+    );
   }
-}
+
+});
+
+module.exports = Icon;
 ```
-
-and this should be passed through babel-loader
-
-### Options
-
-The ouput svg component takes in options that are defined in the svg
-
-### CLI
-
-The react-svg-loader comes with a cli (`svg2react`) that you can use to convert svg files to react components. Use this tool when you'd want to customize your svg component by hand. Otherwise the loader just works.
-
-```sh
-`npm bin`/svg2react file1.svg file2.svg
-```
-
-and the following files will be emitted
-
-+ `file1.svg.react.js`
-+ `file2.svg.react.js`
-
-in the SAME directory as the files
 
 ## Assumptions and Other gotchas
 
 + Root element is always `<svg>`
 + namespace-d attributes (`myns:something`) are stripped
 + Hyphenated attributes are converted to camelCase. Others are preserved as it is
-+ `style` tags are parsed and outputted as objects
++ `style` tags are ignored
 + `root`'s attributes are parsed and overridden by props
 + Only tags allowed by react are retrieved. Others are simply ignored
 + Order of the tags are maintained as it is
-+ Width and Height are added to svg component by default and set to 300 when not defined
++ Width and Height are always 48px
++ `control-icon control-icon-$fileName` class is added and overrides existing classes.
++ Accessibility configuration is added to your svg. If title tag is present that will be used, otherwise a new one will be added as follows:
+
+  ```
+    <svg ...>
+      <title>$fileName</title>
+    </svg>
+  ```
+
+`$fileName` is the current name of the file being parsed by the loader.
 
 ## LICENSE
 
