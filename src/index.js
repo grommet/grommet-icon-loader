@@ -52,9 +52,7 @@ export default function(content) {
     // be done on some initial data
     Promise
       .resolve(filtered)
-      .then(function (data) {
-        return builder(data, fileName);
-      })
+      .then(data => builder(data, fileName))
       .then(makeComponent)
       .then(component => callback(null, component))
       .catch(err => callback(err));
