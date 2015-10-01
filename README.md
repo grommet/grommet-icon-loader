@@ -79,11 +79,11 @@ module.exports = Icon;
 + Order of the tags are maintained as it is
 + Width and Height are always 48px
 + `control-icon control-icon-$fileName` class is added and overrides existing classes.
-+ Accessibility configuration is added to your svg. If title tag is present that will be used, otherwise a new one will be added as follows:
++ Accessibility configuration is added to your svg. Title will be added even if you don't have that in your original svg, as follows:
 
   ```
     <svg ...>
-      <title>$fileName</title>
+      <title id="$fileName-title">$fileName</title>
     </svg>
   ```
 

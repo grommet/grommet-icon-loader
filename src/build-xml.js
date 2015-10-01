@@ -6,6 +6,14 @@ let xmldec = {
   encoding: 'UTF-8'
 };
 
+let svgAttributes = {
+  version: "1.1",
+  viewBox: "0 0 48 48",
+  width: "48px",
+  height: "48px",
+  className: "{className}"
+};
+
 function traverse(tags, root) {
   for(var i in tags) {
     let item = root.ele(tags[i]['#name'], tags[i]['$']);
@@ -13,20 +21,37 @@ function traverse(tags, root) {
   }
 }
 
-export default function(json) {
+export default function(json, fileName) {
+
+  if (json.svg.$.viewBox) {
+    svgAttributes.viewBox = json.svg.$.viewBox;
+  }
+
+  svgAttributes['aria-labelledby'] = '{this.props.a11yTitleId}';
+
   var root = builder.create('svg', xmldec, null, {
     headless: true
   });
-  Object.keys(json.svg.$).map(function(at) {
-    root.att(at, json.svg.$[at]);
+
+  Object.keys(svgAttributes).map(function(at) {
+    root.att(at, svgAttributes[at]);
   });
+
+  root.ele('title', {
+    id: '{this.props.a11yTitleId}'
+  }, '{a11yTitle}');
+
   // for (var i in json.svg.$) root.att(i, json.svg.$[i]);
   traverse(json.svg.$$, root);
-  return root.end({
-    // weird
-    // Unterminated JSX contents
-    // keep this to true cuz I don't why the resultant
-    // JSX throws error while parsing -
-    pretty: true
-  });
+
+  return {
+    svg: root.end({
+      // weird
+      // Unterminated JSX contents
+      // keep this to true cuz I don't why the resultant
+      // JSX throws error while parsing -
+      pretty: true
+    }).replace(/"{/g, '{').replace(/}"/g, '}'),
+    fileName: fileName
+  };
 }

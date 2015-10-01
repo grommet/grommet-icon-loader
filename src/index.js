@@ -1,14 +1,17 @@
 import xml2js from 'xml2js';
+import path from 'path';
 import builder from './build-xml';
 import filter from './deep-filter';
 import {svgTags, svgAttrs} from './react-svg-elements';
 import makeComponent from './make-component';
-import {styleAttrToJsx, convertRootToProps, hyphenToCamel} from './parsers';
+import {hyphenToCamel} from './parsers';
 
 export default function(content) {
 
   this.cacheable && this.cacheable(true);
   this.addDependency(this.resourcePath);
+
+  var fileName = path.basename(this.resourcePath).split('.')[0];
 
   let loaderContext = this;
   let callback = this.async();
@@ -42,12 +45,6 @@ export default function(content) {
       return allowedTags.indexOf(key) > -1;
     });
 
-    // add some basic props by default
-    if ('undefined' === typeof filtered.svg['$'].width)
-      filtered.svg['$'].width = "300";
-    if ('undefined' === typeof filtered.svg['$'].height)
-      filtered.svg['$'].height = "300";
-
     // pass things through the pipeline
     // everything is synchronous anyway,
     // but the promise chain gives us a neat way to
@@ -55,9 +52,9 @@ export default function(content) {
     // be done on some initial data
     Promise
       .resolve(filtered)
-      .then(builder)
-      .then(styleAttrToJsx)
-      .then(convertRootToProps)
+      .then(function (data) {
+        return builder(data, fileName);
+      })
       .then(makeComponent)
       .then(component => callback(null, component))
       .catch(err => callback(err));
