@@ -2,7 +2,7 @@ export default function(resolve) {
   return `${resolve.copyright}
 
 var React = require('react');
-var IntlMixin = require('grommet/mixins/GrommetIntlMixin');
+var IntlMixin = require('${resolve.context}mixins/GrommetIntlMixin');
 
 var Icon = React.createClass({
 

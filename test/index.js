@@ -34,7 +34,7 @@ let svgTargetBasic = `
 // (C) Copyright 2014-2015 Hewlett-Packard Development Company, L.P.
 
 var React = require('react');
-var IntlMixin = require('grommet/mixins/GrommetIntlMixin');
+var IntlMixin = require('../../../mixins/GrommetIntlMixin');
 
 var Icon = React.createClass({
 
