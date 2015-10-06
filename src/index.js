@@ -1,5 +1,6 @@
 import xml2js from 'xml2js';
 import path from 'path';
+import loaderUtils from 'loader-utils';
 import builder from './build-xml';
 import filter from './deep-filter';
 import {svgTags, svgAttrs} from './react-svg-elements';
@@ -10,6 +11,7 @@ export default function(content) {
 
   this.cacheable && this.cacheable(true);
   this.addDependency(this.resourcePath);
+  var query = loaderUtils.parseQuery(this.query);
 
   var fileName = path.basename(this.resourcePath).split('.')[0];
 
@@ -52,7 +54,7 @@ export default function(content) {
     // be done on some initial data
     Promise
       .resolve(filtered)
-      .then(data => builder(data, fileName))
+      .then(data => builder(data, fileName, query.copyright))
       .then(makeComponent)
       .then(component => callback(null, component))
       .catch(err => callback(err));

@@ -21,7 +21,7 @@ function traverse(tags, root) {
   }
 }
 
-export default function(json, fileName) {
+export default function(json, fileName, copyright) {
 
   if (json.svg.$.viewBox) {
     svgAttributes.viewBox = json.svg.$.viewBox;
@@ -45,13 +45,8 @@ export default function(json, fileName) {
   traverse(json.svg.$$, root);
 
   return {
-    svg: root.end({
-      // weird
-      // Unterminated JSX contents
-      // keep this to true cuz I don't why the resultant
-      // JSX throws error while parsing -
-      pretty: true
-    }).replace(/"{/g, '{').replace(/}"/g, '}'),
-    fileName: fileName
+    svg: root.end().replace(/"{/g, '{').replace(/}"/g, '}'),
+    fileName: fileName,
+    copyright: copyright ? '// ' + copyright : ''
   };
 }

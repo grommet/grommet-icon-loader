@@ -31,6 +31,8 @@ let svgSourceBasic = `
 `;
 
 let svgTargetBasic = `
+// (C) Copyright 2014-2015 Hewlett-Packard Development Company, L.P.
+
 var React = require('react');
 var IntlMixin = require('grommet/mixins/GrommetIntlMixin');
 
@@ -78,6 +80,7 @@ module.exports = Icon;
 test('test basic loader output', function(t) {
   t.plan(6);
   let loaderContext = {
+    query: '?copyright=(C) Copyright 2014-2015 Hewlett-Packard Development Company%2C L.P.',
     cacheable: sinon.spy(),
     addDependency: sinon.spy(),
     resourcePath: '/fake/path/github.svg',

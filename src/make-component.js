@@ -1,5 +1,6 @@
 export default function(resolve) {
-  return `
+  return `${resolve.copyright}
+
 var React = require('react');
 var IntlMixin = require('grommet/mixins/GrommetIntlMixin');
 
