@@ -1,6 +1,6 @@
 {
   "name": "grommet-icon-loader",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Loads svg icons as a react component in Grommet",
   "main": "lib/index.js",
   "scripts": {
@@ -27,7 +27,8 @@
   "dependencies": {
     "xml2js": "~0.4.9",
     "xmlbuilder": "~2.6.4",
-    "yargs": "~3.18.0"
+    "yargs": "~3.18.0",
+    "loader-utils": "^0.2.11"
   },
   "devDependencies": {
     "babel": "^5.8.3",
@@ -35,7 +36,6 @@
     "faucet": "0.0.1",
     "lodash.clonedeep": "^3.0.1",
     "sinon": "^1.15.4",
-    "tape": "^4.0.0",
-    "loader-utils": "^0.2.11"
+    "tape": "^4.0.0"
   }
 }
