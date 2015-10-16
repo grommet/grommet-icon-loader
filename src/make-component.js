@@ -4,11 +4,15 @@ export default function(resolve) {
 var React = require('react');
 var IntlMixin = require('${resolve.context}mixins/GrommetIntlMixin');
 
+var CLASS_ROOT = "control-icon";
+
 var Icon = React.createClass({
 
   propTypes: {
     a11yTitle: React.PropTypes.string,
-    a11yTitleId: React.PropTypes.string
+    a11yTitleId: React.PropTypes.string,
+    colorIndex: React.PropTypes.string,
+    large: React.PropTypes.bool
   },
 
   mixins: [IntlMixin],
@@ -20,9 +24,15 @@ var Icon = React.createClass({
   },
 
   render: function() {
-    var className = 'control-icon control-icon-${resolve.fileName}';
+    var classes = [CLASS_ROOT, CLASS_ROOT + '-${resolve.fileName}'];
+    if (this.props.large) {
+      classes.push(CLASS_ROOT + "--large");
+    }
+    if (this.props.colorIndex) {
+      classes.push("color-index-" + this.props.colorIndex);
+    }
     if (this.props.className) {
-      className += ' ' + this.props.className;
+      classes.push(this.props.className);
     }
 
     var a11yTitle = this.getGrommetIntlMessage(

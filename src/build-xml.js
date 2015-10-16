@@ -11,7 +11,7 @@ let svgAttributes = {
   viewBox: "0 0 48 48",
   width: "48px",
   height: "48px",
-  className: "{className}"
+  className: "{classes.join(' ')}"
 };
 
 function traverse(tags, root) {
