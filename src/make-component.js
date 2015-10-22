@@ -2,7 +2,8 @@ export default function(resolve) {
   return `${resolve.copyright}
 
 var React = require('react');
-var IntlMixin = require('${resolve.context}mixins/GrommetIntlMixin');
+var ReactIntl = require('react-intl');
+var FormattedMessage = ReactIntl.FormattedMessage;
 
 var CLASS_ROOT = "control-icon";
 
@@ -14,8 +15,6 @@ var Icon = React.createClass({
     colorIndex: React.PropTypes.string,
     large: React.PropTypes.bool
   },
-
-  mixins: [IntlMixin],
 
   getDefaultProps: function () {
     return {
@@ -35,9 +34,11 @@ var Icon = React.createClass({
       classes.push(this.props.className);
     }
 
-    var a11yTitle = this.getGrommetIntlMessage(
-      typeof this.props.a11yTitle !== "undefined" ?
-        this.props.a11yTitle : "${resolve.fileName}");
+    var titleLabel = typeof this.props.a11yTitle !== "undefined" ?
+      this.props.a11yTitle : "${resolve.fileName}";
+    var a11yTitle = (
+      <FormattedMessage id={titleLabel} defaultMessage={titleLabel} />
+    );
 
     return (
       ${resolve.svg}

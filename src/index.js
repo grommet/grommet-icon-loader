@@ -54,7 +54,7 @@ export default function(content) {
     // be done on some initial data
     Promise
       .resolve(filtered)
-      .then(data => builder(data, fileName, query.copyright, query.context))
+      .then(data => builder(data, fileName, query.copyright))
       .then(makeComponent)
       .then(component => callback(null, component))
       .catch(err => callback(err));

@@ -34,7 +34,8 @@ let svgTargetBasic = `
 // (C) Copyright 2014-2015 Hewlett-Packard Development Company, L.P.
 
 var React = require('react');
-var IntlMixin = require('../../../mixins/GrommetIntlMixin');
+var ReactIntl = require('react-intl');
+var FormattedMessage = ReactIntl.FormattedMessage;
 
 var CLASS_ROOT = "control-icon";
 
@@ -46,8 +47,6 @@ var Icon = React.createClass({
     colorIndex: React.PropTypes.string,
     large: React.PropTypes.bool
   },
-
-  mixins: [IntlMixin],
 
   getDefaultProps: function () {
     return {
@@ -67,9 +66,11 @@ var Icon = React.createClass({
       classes.push(this.props.className);
     }
 
-    var a11yTitle = this.getGrommetIntlMessage(
-      typeof this.props.a11yTitle !== "undefined" ?
-        this.props.a11yTitle : "github");
+    var titleLabel = typeof this.props.a11yTitle !== "undefined" ?
+      this.props.a11yTitle : "github";
+    var a11yTitle = (
+      <FormattedMessage id={titleLabel} defaultMessage={titleLabel} />
+    );
 
     return (
       <svg version="1.1" viewBox="0 0 48 48" width="48px" height="48px" className={classes.join(' ')} aria-labelledby={this.props.a11yTitleId}>
