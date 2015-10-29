@@ -1,3 +1,5 @@
+// (C) Copyright 2014-2015 Hewlett Packard Enterprise Development LP
+
 function isPlainObject(o) {
   return o!==null && 'object' === typeof o;
 }

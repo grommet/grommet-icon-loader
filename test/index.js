@@ -1,3 +1,5 @@
+// (C) Copyright 2014-2015 Hewlett Packard Enterprise Development LP
+
 // run other tests
 import './deep-filter';
 

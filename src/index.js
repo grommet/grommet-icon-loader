@@ -1,3 +1,5 @@
+// (C) Copyright 2014-2015 Hewlett Packard Enterprise Development LP
+
 import xml2js from 'xml2js';
 import path from 'path';
 import loaderUtils from 'loader-utils';

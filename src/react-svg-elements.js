@@ -1,3 +1,4 @@
+// (C) Copyright 2014-2015 Hewlett Packard Enterprise Development LP
 // taken from
 // https://facebook.github.io/react/docs/tags-and-attributes.html
 
