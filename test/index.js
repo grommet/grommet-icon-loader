@@ -33,7 +33,7 @@ let svgSourceBasic = `
 `;
 
 let svgTargetBasic = `
-// (C) Copyright 2014-2015 Hewlett-Packard Development Company, L.P.
+// (C) Copyright 2014-2015 Hewlett Packard Enterprise Development LP
 
 var React = require('react');
 var ReactIntl = require('react-intl');
@@ -93,7 +93,7 @@ module.exports = Icon;
 test('test basic loader output', function(t) {
   t.plan(6);
   let loaderContext = {
-    query: '?copyright=(C) Copyright 2014-2015 Hewlett-Packard Development Company%2C L.P.',
+    query: '?copyright=(C) Copyright 2014-2015 Hewlett Packard Enterprise Development LP',
     cacheable: sinon.spy(),
     addDependency: sinon.spy(),
     resourcePath: '/fake/path/github.svg',
