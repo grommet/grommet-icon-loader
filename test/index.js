@@ -37,7 +37,7 @@ let svgTargetBasic = `
 
 var React = require('react');
 var ReactIntl = require('react-intl');
-var FormattedMessage = require('../../FormattedMessage');
+var FormattedMessage = require('grommet/components/FormattedMessage');
 
 var CLASS_ROOT = "control-icon";
 

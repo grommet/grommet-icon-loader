@@ -23,7 +23,7 @@ function traverse(tags, root) {
   }
 }
 
-export default function(json, fileName, copyright) {
+export default function(json, fileName, copyright, context) {
 
   if (json.svg.$.viewBox) {
     svgAttributes.viewBox = json.svg.$.viewBox;
@@ -49,6 +49,7 @@ export default function(json, fileName, copyright) {
   return {
     svg: root.end().replace(/"{/g, '{').replace(/}"/g, '}'),
     fileName: fileName,
-    copyright: copyright ? '// ' + copyright : ''
+    copyright: copyright ? '// ' + copyright : '',
+    context: context || 'grommet/'
   };
 }
