@@ -5,7 +5,7 @@ export default function(resolve) {
 
 var React = require('react');
 var ReactIntl = require('react-intl');
-var FormattedMessage = ReactIntl.FormattedMessage;
+var FormattedMessage = require('../../FormattedMessage');
 
 var CLASS_ROOT = "control-icon";
 
