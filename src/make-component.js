@@ -4,7 +4,6 @@ export default function(resolve) {
   return `${resolve.copyright}
 
 var React = require('react');
-var ReactIntl = require('react-intl');
 var FormattedMessage = require('${resolve.context}components/FormattedMessage');
 
 var CLASS_ROOT = "control-icon";

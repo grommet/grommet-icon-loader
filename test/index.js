@@ -36,7 +36,6 @@ let svgTargetBasic = `
 // (C) Copyright 2014-2015 Hewlett Packard Enterprise Development LP
 
 var React = require('react');
-var ReactIntl = require('react-intl');
 var FormattedMessage = require('grommet/components/FormattedMessage');
 
 var CLASS_ROOT = "control-icon";
