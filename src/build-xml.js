@@ -10,9 +10,9 @@ let xmldec = {
 
 let svgAttributes = {
   version: "1.1",
-  viewBox: "0 0 48 48",
-  width: "48px",
-  height: "48px",
+  viewBox: "0 0 24 24",
+  width: "24px",
+  height: "24px",
   className: "{classes.join(' ')}"
 };
 

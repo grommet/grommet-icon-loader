@@ -3,30 +3,19 @@
 export default function(resolve) {
   return `${resolve.copyright}
 
-var React = require('react');
-var FormattedMessage = require('${resolve.context}components/FormattedMessage');
+import React, { Component, PropTypes } from 'react';
+import FormattedMessage from '${resolve.context}components/FormattedMessage';
 
-var CLASS_ROOT = "control-icon";
+const CLASS_ROOT = "control-icon";
 
-var Icon = React.createClass({
+class Icon extends Component {
 
-  propTypes: {
-    a11yTitle: React.PropTypes.string,
-    a11yTitleId: React.PropTypes.string,
-    colorIndex: React.PropTypes.string,
-    large: React.PropTypes.bool
-  },
-
-  getDefaultProps: function () {
-    return {
-      a11yTitleId: '${resolve.fileName}-title'
-    };
-  },
-
-  render: function() {
+  render () {
     var classes = [CLASS_ROOT, CLASS_ROOT + '-${resolve.fileName}'];
-    if (this.props.large) {
-      classes.push(CLASS_ROOT + "--large");
+    if (this.props.size) {
+      classes.push(CLASS_ROOT + \"--\" + this.props.size);
+    } else if (this.props.large) {
+      classes.push(CLASS_ROOT + \"--large\");
     }
     if (this.props.colorIndex) {
       classes.push("color-index-" + this.props.colorIndex);
@@ -46,7 +35,19 @@ var Icon = React.createClass({
     );
   }
 
-});
+}
+
+Icon.propTypes = {
+  a11yTitle: PropTypes.string,
+  a11yTitleId: PropTypes.string,
+  colorIndex: PropTypes.string,
+  large: PropTypes.bool,
+  size: PropTypes.oneOf(['small', 'medium', 'large'])
+};
+
+Icon.defaultProps = {
+  a11yTitleId: '" + resolve.fileName + "-title'
+};
 
 module.exports = Icon;
 `;
