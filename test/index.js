@@ -14,20 +14,13 @@ var babel = require('babel');
 
 let svgSourceBasic = `
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="XMLID_29_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-   viewBox="0 0 48 48" enable-background="new 0 0 48 48" xml:space="preserve">
-<g id="social-github">
-  <rect id="_x2E_svg_282_" x="0" y="0" fill="none" width="48" height="48"/>
-  <path stroke-width="10" d="M35.0014,25.7187c0,4.5554-2.75,8.25-11,8.25s-11-3.696-11-8.25c0-1.9635,0.451-3.7647,1.6486-5.1824
-    c-0.3492-0.9446-1.0422-3.6135,0.7576-6.743c3.2739,0.8223,4.8661,2.8875,5.4615,3.8734c0.9405-0.1265,1.9759-0.198,3.1322-0.198
-    c1.1495,0,2.1807,0.0784,3.1226,0.2145c0.5871-0.9804,2.178-3.0621,5.4711-3.8899c1.8631,3.2409,1.056,5.9867,0.7219,6.8365
-    C34.5036,22.0324,35.0014,23.7965,35.0014,25.7187z M31.2188,25.0312C29.4808,24.1622,27.4375,24,24,24
-    s-5.4808,0.1623-7.2188,1.0312c-2.0625,1.0312-2.0625,4.4688,0,5.8438c1.5414,1.0271,3.5104,1.7188,7.2188,1.7188
-    c3.707,0,5.676-0.6916,7.2188-1.7188C33.2813,29.5,33.2813,26.0625,31.2188,25.0312z M27.4389,25.375
-    c-1.4355,0-2.0625,1.2306-2.0625,2.75c0,1.518,0.5775,2.75,2.0625,2.75c1.485,0,2.0625-1.232,2.0625-2.75
-    C29.5014,26.6056,28.8758,25.375,27.4389,25.375z M20.5639,25.375c-1.4355,0-2.0625,1.2306-2.0625,2.75
-    c0,1.518,0.5775,2.75,2.0625,2.75c1.485,0,2.0625-1.232,2.0625-2.75C22.6264,26.6056,22.0008,25.375,20.5639,25.375z"/>
+<!-- Generator: Adobe Illustrator 17.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="XMLID_313_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+<g id="add">
+	<rect id="_x2E_svg_1_" x="0" fill="none" width="24" height="24"/>
+	<path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M0,12h24 M12,24V0"/>
 </g>
 </svg>
 `;
@@ -35,29 +28,18 @@ let svgSourceBasic = `
 let svgTargetBasic = `
 // (C) Copyright 2014-2015 Hewlett Packard Enterprise Development LP
 
-var React = require('react');
-var FormattedMessage = require('grommet/components/FormattedMessage');
+import React, { Component, PropTypes } from 'react';
+import FormattedMessage from 'grommet/components/FormattedMessage';
 
-var CLASS_ROOT = "control-icon";
+const CLASS_ROOT = "control-icon";
 
-var Icon = React.createClass({
+class Icon extends Component {
 
-  propTypes: {
-    a11yTitle: React.PropTypes.string,
-    a11yTitleId: React.PropTypes.string,
-    colorIndex: React.PropTypes.string,
-    large: React.PropTypes.bool
-  },
-
-  getDefaultProps: function () {
-    return {
-      a11yTitleId: 'github-title'
-    };
-  },
-
-  render: function() {
-    var classes = [CLASS_ROOT, CLASS_ROOT + '-github'];
-    if (this.props.large) {
+  render () {
+    var classes = [CLASS_ROOT, CLASS_ROOT + '-add'];
+    if (this.props.size) {
+      classes.push(CLASS_ROOT + "--" + this.props.size);
+    } else if (this.props.large) {
       classes.push(CLASS_ROOT + "--large");
     }
     if (this.props.colorIndex) {
@@ -68,23 +50,29 @@ var Icon = React.createClass({
     }
 
     var titleLabel = typeof this.props.a11yTitle !== "undefined" ?
-      this.props.a11yTitle : "github";
+      this.props.a11yTitle : "add";
     var a11yTitle = (
       <FormattedMessage id={titleLabel} defaultMessage={titleLabel} />
     );
 
     return (
-      <svg version="1.1" viewBox="0 0 48 48" width="48px" height="48px" className={classes.join(' ')} aria-labelledby={this.props.a11yTitleId}>
-        <title id={this.props.a11yTitleId}>{a11yTitle}</title>
-        <g id="social-github">
-          <rect id="_x2E_svg_282_" x="0" y="0" fill="none" width="48" height="48"/>
-          <path strokeWidth="10" d="M35.0014,25.7187c0,4.5554-2.75,8.25-11,8.25s-11-3.696-11-8.25c0-1.9635,0.451-3.7647,1.6486-5.1824&#xA;    c-0.3492-0.9446-1.0422-3.6135,0.7576-6.743c3.2739,0.8223,4.8661,2.8875,5.4615,3.8734c0.9405-0.1265,1.9759-0.198,3.1322-0.198&#xA;    c1.1495,0,2.1807,0.0784,3.1226,0.2145c0.5871-0.9804,2.178-3.0621,5.4711-3.8899c1.8631,3.2409,1.056,5.9867,0.7219,6.8365&#xA;    C34.5036,22.0324,35.0014,23.7965,35.0014,25.7187z M31.2188,25.0312C29.4808,24.1622,27.4375,24,24,24&#xA;    s-5.4808,0.1623-7.2188,1.0312c-2.0625,1.0312-2.0625,4.4688,0,5.8438c1.5414,1.0271,3.5104,1.7188,7.2188,1.7188&#xA;    c3.707,0,5.676-0.6916,7.2188-1.7188C33.2813,29.5,33.2813,26.0625,31.2188,25.0312z M27.4389,25.375&#xA;    c-1.4355,0-2.0625,1.2306-2.0625,2.75c0,1.518,0.5775,2.75,2.0625,2.75c1.485,0,2.0625-1.232,2.0625-2.75&#xA;    C29.5014,26.6056,28.8758,25.375,27.4389,25.375z M20.5639,25.375c-1.4355,0-2.0625,1.2306-2.0625,2.75&#xA;    c0,1.518,0.5775,2.75,2.0625,2.75c1.485,0,2.0625-1.232,2.0625-2.75C22.6264,26.6056,22.0008,25.375,20.5639,25.375z"/>
-        </g>
-      </svg>
+      <svg version="1.1" viewBox="0 0 24 24" width="24px" height="24px" className={classes.join(' ')} aria-labelledby={this.props.a11yTitleId}><title id={this.props.a11yTitleId}>{a11yTitle}</title><g id="add"><rect id="_x2E_svg_1_" x="0" fill="none" width="24" height="24"/><path fill="none" stroke="#000000" strokeWidth="2" strokeMiterlimit="10" d="M0,12h24 M12,24V0"/></g></svg>
     );
   }
 
-});
+}
+
+Icon.propTypes = {
+  a11yTitle: PropTypes.string,
+  a11yTitleId: PropTypes.string,
+  colorIndex: PropTypes.string,
+  large: PropTypes.bool,
+  size: PropTypes.oneOf(['small', 'medium', 'large'])
+};
+
+Icon.defaultProps = {
+  a11yTitleId: '" + resolve.fileName + "-title'
+};
 
 module.exports = Icon;
 `;
@@ -95,7 +83,7 @@ test('test basic loader output', function(t) {
     query: '?copyright=(C) Copyright 2014-2015 Hewlett Packard Enterprise Development LP',
     cacheable: sinon.spy(),
     addDependency: sinon.spy(),
-    resourcePath: '/fake/path/github.svg',
+    resourcePath: '/fake/path/add.svg',
     async: function() {
       return function(err, result) {
         t.ok(err === null, 'no compilation errors occurred');
