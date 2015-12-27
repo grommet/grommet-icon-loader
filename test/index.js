@@ -33,7 +33,7 @@ import FormattedMessage from 'grommet/components/FormattedMessage';
 
 const CLASS_ROOT = "control-icon";
 
-class Icon extends Component {
+export default class Icon extends Component {
 
   render () {
     var classes = [CLASS_ROOT, CLASS_ROOT + '-add'];
@@ -75,8 +75,6 @@ Icon.defaultProps = {
 };
 
 Icon.icon = true;
-
-module.exports = Icon;
 `;
 
 test('test basic loader output', function(t) {
