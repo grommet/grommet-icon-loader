@@ -8,7 +8,7 @@ import FormattedMessage from '${resolve.context}components/FormattedMessage';
 
 const CLASS_ROOT = "control-icon";
 
-class Icon extends Component {
+export default class Icon extends Component {
 
   render () {
     var classes = [CLASS_ROOT, CLASS_ROOT + '-${resolve.fileName}'];
@@ -50,8 +50,6 @@ Icon.defaultProps = {
 };
 
 Icon.icon = true;
-
-module.exports = Icon;
 `;
 
 };
