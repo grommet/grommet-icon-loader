@@ -71,7 +71,7 @@ Icon.propTypes = {
 };
 
 Icon.defaultProps = {
-  a11yTitleId: '" + resolve.fileName + "-title'
+  a11yTitleId: 'add-title'
 };
 
 Icon.icon = true;
