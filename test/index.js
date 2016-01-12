@@ -8,10 +8,6 @@ import test from 'tape';
 import sinon from 'sinon';
 import loader from '../src/index';
 
-// I don't know why,
-// but babel must be require-d
-var babel = require('babel');
-
 let svgSourceBasic = `
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 17.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
@@ -75,10 +71,12 @@ Icon.defaultProps = {
 };
 
 Icon.icon = true;
+module.exports = exports['default'];
+
 `;
 
 test('test basic loader output', function(t) {
-  t.plan(6);
+  t.plan(5);
   let loaderContext = {
     query: '?copyright=(C) Copyright 2014-2015 Hewlett Packard Enterprise Development LP',
     cacheable: sinon.spy(),
@@ -89,8 +87,6 @@ test('test basic loader output', function(t) {
         t.ok(err === null, 'no compilation errors occurred');
         t.ok(result, 'result exists');
         t.equal(result.replace(/\n|\s/g, ''), svgTargetBasic.replace(/\n|\s/g, ''));
-        let res = babel.transform(result);
-        t.ok(typeof res === 'object', 'babel transformation test');
       };
     }
   };

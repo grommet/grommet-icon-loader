@@ -50,6 +50,8 @@ Icon.defaultProps = {
 };
 
 Icon.icon = true;
+module.exports = exports['default'];
+
 `;
 
 };
