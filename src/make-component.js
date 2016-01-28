@@ -3,39 +3,34 @@
 export default function(resolve) {
   return `${resolve.copyright}
 
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
+import classnames from 'classnames';
 import FormattedMessage from '${resolve.context}components/FormattedMessage';
 
-const CLASS_ROOT = "control-icon";
+const CLASS_ROOT = 'control-icon';
 
-export default class Icon extends Component {
+const Icon = props => {
+  let { a11yTitle, a11yTitleId, className, colorIndex, large, size } = props;
 
-  render () {
-    var classes = [CLASS_ROOT, CLASS_ROOT + '-${resolve.fileName}'];
-    if (this.props.size) {
-      classes.push(CLASS_ROOT + \"--\" + this.props.size);
-    } else if (this.props.large) {
-      classes.push(CLASS_ROOT + \"--large\");
-    }
-    if (this.props.colorIndex) {
-      classes.push("color-index-" + this.props.colorIndex);
-    }
-    if (this.props.className) {
-      classes.push(this.props.className);
-    }
-
-    var titleLabel = typeof this.props.a11yTitle !== "undefined" ?
-      this.props.a11yTitle : "${resolve.fileName}";
-    var a11yTitle = (
-      <FormattedMessage id={titleLabel} defaultMessage={titleLabel} />
-    );
-
-    return (
-      ${resolve.svg}
-    );
+  if (!size && large) {
+    size = 'large';
   }
 
-}
+  let classes = classnames(
+    CLASS_ROOT,
+    \`\${CLASS_ROOT}-${resolve.fileName}\`,
+    className,
+    {
+      [\`\${CLASS_ROOT}--\${size}\`]: size,
+      [\`color-index-\${colorIndex}\`]: colorIndex
+    }
+  );
+
+  let titleLabel = a11yTitle || '${resolve.fileName}';
+  a11yTitle = <FormattedMessage id={titleLabel} defaultMessage={titleLabel} />;
+
+  return ${resolve.svg};
+};
 
 Icon.propTypes = {
   a11yTitle: PropTypes.string,
@@ -50,8 +45,8 @@ Icon.defaultProps = {
 };
 
 Icon.icon = true;
-module.exports = exports.default;
 
+export default Icon;
 `;
 
 };

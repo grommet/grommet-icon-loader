@@ -13,7 +13,7 @@ let svgAttributes = {
   viewBox: "0 0 24 24",
   width: "24px",
   height: "24px",
-  className: "{classes.join(' ')}"
+  className: "{classes}"
 };
 
 function traverse(tags, root) {
@@ -29,7 +29,7 @@ export default function(json, fileName, copyright, context) {
     svgAttributes.viewBox = json.svg.$.viewBox;
   }
 
-  svgAttributes['aria-labelledby'] = '{this.props.a11yTitleId}';
+  svgAttributes['aria-labelledby'] = '{a11yTitleId}';
 
   var root = builder.create('svg', xmldec, null, {
     headless: true
@@ -40,7 +40,7 @@ export default function(json, fileName, copyright, context) {
   });
 
   root.ele('title', {
-    id: '{this.props.a11yTitleId}'
+    id: '{a11yTitleId}'
   }, '{a11yTitle}');
 
   // for (var i in json.svg.$) root.att(i, json.svg.$[i]);

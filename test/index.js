@@ -24,39 +24,34 @@ let svgSourceBasic = `
 let svgTargetBasic = `
 // (C) Copyright 2014-2015 Hewlett Packard Enterprise Development LP
 
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
+import classnames from 'classnames';
 import FormattedMessage from 'grommet/components/FormattedMessage';
 
-const CLASS_ROOT = "control-icon";
+const CLASS_ROOT = 'control-icon';
 
-export default class Icon extends Component {
+const Icon = props => {
+  let { a11yTitle, a11yTitleId, className, colorIndex, large, size } = props;
 
-  render () {
-    var classes = [CLASS_ROOT, CLASS_ROOT + '-add'];
-    if (this.props.size) {
-      classes.push(CLASS_ROOT + "--" + this.props.size);
-    } else if (this.props.large) {
-      classes.push(CLASS_ROOT + "--large");
-    }
-    if (this.props.colorIndex) {
-      classes.push("color-index-" + this.props.colorIndex);
-    }
-    if (this.props.className) {
-      classes.push(this.props.className);
-    }
-
-    var titleLabel = typeof this.props.a11yTitle !== "undefined" ?
-      this.props.a11yTitle : "add";
-    var a11yTitle = (
-      <FormattedMessage id={titleLabel} defaultMessage={titleLabel} />
-    );
-
-    return (
-      <svg version="1.1" viewBox="0 0 24 24" width="24px" height="24px" className={classes.join(' ')} aria-labelledby={this.props.a11yTitleId}><title id={this.props.a11yTitleId}>{a11yTitle}</title><g id="add"><rect id="_x2E_svg_1_" x="0" fill="none" width="24" height="24"/><path fill="none" stroke="#000000" strokeWidth="2" strokeMiterlimit="10" d="M0,12h24 M12,24V0"/></g></svg>
-    );
+  if (!size && large) {
+    size = 'large';
   }
 
-}
+  let classes = classnames(
+    CLASS_ROOT,
+    \`\${CLASS_ROOT}-add\`,
+    className,
+    {
+      [\`\${CLASS_ROOT}--\${size}\`]: size,
+      [\`color-index-\${colorIndex}\`]: colorIndex
+    }
+  );
+
+  let titleLabel = a11yTitle || 'add';
+  a11yTitle = <FormattedMessage id={titleLabel} defaultMessage={titleLabel} />;
+
+  return <svg version="1.1" viewBox="0 0 24 24" width="24px" height="24px" className={classes} aria-labelledby={a11yTitleId}><title id={a11yTitleId}>{a11yTitle}</title><g id="add"><rect id="_x2E_svg_1_" x="0" fill="none" width="24" height="24"/><path fill="none" stroke="#000000" strokeWidth="2" strokeMiterlimit="10" d="M0,12h24 M12,24V0"/></g></svg>;
+};
 
 Icon.propTypes = {
   a11yTitle: PropTypes.string,
@@ -71,8 +66,8 @@ Icon.defaultProps = {
 };
 
 Icon.icon = true;
-module.exports = exports.default;
 
+export default Icon;
 `;
 
 test('test basic loader output', function(t) {
