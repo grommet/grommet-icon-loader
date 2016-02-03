@@ -1,5 +1,7 @@
 // (C) Copyright 2014-2015 Hewlett Packard Enterprise Development LP
 
+import pascalCase from 'pascal-case';
+
 export default function(resolve) {
   return `${resolve.copyright}
 
@@ -45,6 +47,8 @@ Icon.defaultProps = {
 };
 
 Icon.icon = true;
+
+Icon.displayName = '${pascalCase(resolve.fileName)}';
 
 export default Icon;
 `;

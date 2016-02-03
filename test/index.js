@@ -67,6 +67,8 @@ Icon.defaultProps = {
 
 Icon.icon = true;
 
+Icon.displayName = 'Add';
+
 export default Icon;
 `;
 
