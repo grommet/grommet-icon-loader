@@ -7,7 +7,7 @@ import builder from './build-xml';
 import filter from './deep-filter';
 import {svgTags, svgAttrs} from './react-svg-elements';
 import makeComponent from './make-component';
-import {hyphenToCamel} from './parsers';
+import camelCase from 'camel-case';
 
 export default function(content) {
 
@@ -43,7 +43,7 @@ export default function(content) {
         // if the attribute is a namespace attr, then ignore
         if (key.indexOf(':') > -1) return false;
         // convert hyphens to camelcase
-        if (key.indexOf('-') > -1) return hyphenToCamel(key);
+        if (key.indexOf('-') > -1) return camelCase(key);
         return true;
       }
       return allowedTags.indexOf(key) > -1;
