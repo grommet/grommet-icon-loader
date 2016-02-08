@@ -58,7 +58,7 @@ Icon.propTypes = {
   a11yTitleId: PropTypes.string,
   colorIndex: PropTypes.string,
   large: PropTypes.bool,
-  size: PropTypes.oneOf(['small', 'medium', 'large'])
+  size: PropTypes.oneOf(['small', 'medium', 'large', 'huge'])
 };
 
 Icon.defaultProps = {
