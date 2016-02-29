@@ -24,33 +24,35 @@ let svgSourceBasic = `
 let svgTargetBasic = `
 // (C) Copyright 2014-2015 Hewlett Packard Enterprise Development LP
 
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import FormattedMessage from 'grommet/components/FormattedMessage';
 
 const CLASS_ROOT = 'control-icon';
 
-const Icon = props => {
-  let { a11yTitle, a11yTitleId, className, colorIndex, large, size } = props;
+export default class Icon extends Component {
+	render () {
+	  let { a11yTitle, a11yTitleId, className, colorIndex, large, size } = this.props;
 
-  if (!size && large) {
-    size = 'large';
-  }
+	  if (!size && large) {
+	    size = 'large';
+	  }
 
-  let classes = classnames(
-    CLASS_ROOT,
-    \`\${CLASS_ROOT}-add\`,
-    className,
-    {
-      [\`\${CLASS_ROOT}--\${size}\`]: size,
-      [\`color-index-\${colorIndex}\`]: colorIndex
-    }
-  );
+	  let classes = classnames(
+	    CLASS_ROOT,
+	    \`\${CLASS_ROOT}-add\`,
+	    className,
+	    {
+	      [\`\${CLASS_ROOT}--\${size}\`]: size,
+	      [\`color-index-\${colorIndex}\`]: colorIndex
+	    }
+	  );
 
-  let titleLabel = a11yTitle || 'add';
-  a11yTitle = <FormattedMessage id={titleLabel} defaultMessage={titleLabel} />;
+	  let titleLabel = a11yTitle || 'add';
+	  a11yTitle = <FormattedMessage id={titleLabel} defaultMessage={titleLabel} />;
 
-  return <svg version="1.1" viewBox="0 0 24 24" width="24px" height="24px" className={classes} aria-labelledby={a11yTitleId}><title id={a11yTitleId}>{a11yTitle}</title><g id="add"><rect id="_x2E_svg_1_" x="0" fill="none" width="24" height="24"/><path fill="none" stroke="#000000" strokeWidth="2" strokeMiterlimit="10" d="M0,12h24 M12,24V0"/></g></svg>;
+	  return <svg version="1.1" viewBox="0 0 24 24" width="24px" height="24px" className={classes} aria-labelledby={a11yTitleId}><title id={a11yTitleId}>{a11yTitle}</title><g id="add"><rect id="_x2E_svg_1_" x="0" fill="none" width="24" height="24"/><path fill="none" stroke="#000000" strokeWidth="2" strokeMiterlimit="10" d="M0,12h24 M12,24V0"/></g></svg>;
+	}
 };
 
 Icon.propTypes = {
@@ -69,7 +71,6 @@ Icon.icon = true;
 
 Icon.displayName = 'Add';
 
-export default Icon;
 `;
 
 test('test basic loader output', function(t) {

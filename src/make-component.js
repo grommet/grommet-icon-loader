@@ -5,33 +5,35 @@ import pascalCase from 'pascal-case';
 export default function(resolve) {
   return `${resolve.copyright}
 
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import FormattedMessage from '${resolve.context}components/FormattedMessage';
 
 const CLASS_ROOT = 'control-icon';
 
-const Icon = props => {
-  let { a11yTitle, a11yTitleId, className, colorIndex, large, size } = props;
+export default class Icon extends Component {
+  render () {
+    let { a11yTitle, a11yTitleId, className, colorIndex, large, size } = this.props;
 
-  if (!size && large) {
-    size = 'large';
-  }
-
-  let classes = classnames(
-    CLASS_ROOT,
-    \`\${CLASS_ROOT}-${resolve.fileName}\`,
-    className,
-    {
-      [\`\${CLASS_ROOT}--\${size}\`]: size,
-      [\`color-index-\${colorIndex}\`]: colorIndex
+    if (!size && large) {
+      size = 'large';
     }
-  );
 
-  let titleLabel = a11yTitle || '${resolve.fileName}';
-  a11yTitle = <FormattedMessage id={titleLabel} defaultMessage={titleLabel} />;
+    let classes = classnames(
+      CLASS_ROOT,
+      \`\${CLASS_ROOT}-${resolve.fileName}\`,
+      className,
+      {
+        [\`\${CLASS_ROOT}--\${size}\`]: size,
+        [\`color-index-\${colorIndex}\`]: colorIndex
+      }
+    );
 
-  return ${resolve.svg};
+    let titleLabel = a11yTitle || '${resolve.fileName}';
+    a11yTitle = <FormattedMessage id={titleLabel} defaultMessage={titleLabel} />;
+
+    return ${resolve.svg};
+  }
 };
 
 Icon.propTypes = {
@@ -50,7 +52,6 @@ Icon.icon = true;
 
 Icon.displayName = '${pascalCase(resolve.fileName)}';
 
-export default Icon;
 `;
 
 };
