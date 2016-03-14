@@ -13,13 +13,14 @@ const CLASS_ROOT = 'control-icon';
 
 export default class Icon extends Component {
   render () {
-    let { a11yTitle, a11yTitleId, className, colorIndex, large, size } = this.props;
+    const { a11yTitleId, className, colorIndex, large } = this.props;
+    let { a11yTitle, size } = this.props;
 
     if (!size && large) {
       size = 'large';
     }
 
-    let classes = classnames(
+    const classes = classnames(
       CLASS_ROOT,
       \`\${CLASS_ROOT}-${resolve.fileName}\`,
       className,
@@ -29,8 +30,8 @@ export default class Icon extends Component {
       }
     );
 
-    let titleLabel = a11yTitle || '${resolve.fileName}';
-    a11yTitle = <FormattedMessage id={titleLabel} defaultMessage={titleLabel} />;
+    a11yTitle = a11yTitle ||
+      <FormattedMessage id="${resolve.fileName}" defaultMessage="${resolve.fileName}" />;
 
     return ${resolve.svg};
   }
