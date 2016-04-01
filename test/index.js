@@ -51,7 +51,7 @@ export default class Icon extends Component {
 
 	  a11yTitle = a11yTitle || <FormattedMessage id="add" defaultMessage="add" />;
 
-	  return <svg version="1.1" viewBox="0 0 24 24" width="24px" height="24px" className={classes} aria-labelledby={a11yTitleId}><title id={a11yTitleId}>{a11yTitle}</title><g id="add"><rect id="_x2E_svg_1_" x="0" fill="none" width="24" height="24"/><path fill="none" stroke="#000000" strokeWidth="2" strokeMiterlimit="10" d="M0,12h24 M12,24V0"/></g></svg>;
+	  return <svg version="1.1" viewBox="0 0 24 24" width="24px" height="24px" role="img" className={classes} aria-labelledby={a11yTitleId}><title id={a11yTitleId}>{a11yTitle}</title><g id="add"><rect id="_x2E_svg_1_" x="0" fill="none" width="24" height="24"/><path fill="none" stroke="#000000" strokeWidth="2" strokeMiterlimit="10" d="M0,12h24 M12,24V0"/></g></svg>;
 	}
 };
 

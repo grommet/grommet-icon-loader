@@ -13,6 +13,7 @@ let svgAttributes = {
   viewBox: "0 0 24 24",
   width: "24px",
   height: "24px",
+  role: "img",
   className: "{classes}"
 };
 
