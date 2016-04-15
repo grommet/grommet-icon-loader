@@ -16,10 +16,6 @@ export default class Icon extends Component {
     const { a11yTitleId, className, colorIndex, large } = this.props;
     let { a11yTitle, size } = this.props;
 
-    if (!size && large) {
-      size = 'large';
-    }
-
     const classes = classnames(
       CLASS_ROOT,
       \`\${CLASS_ROOT}-${resolve.fileName}\`,
@@ -41,8 +37,7 @@ Icon.propTypes = {
   a11yTitle: PropTypes.string,
   a11yTitleId: PropTypes.string,
   colorIndex: PropTypes.string,
-  large: PropTypes.bool,
-  size: PropTypes.oneOf(['small', 'medium', 'large', 'huge'])
+  size: PropTypes.oneOf(['small', 'medium', 'large', 'xlarge', 'huge'])
 };
 
 Icon.defaultProps = {
