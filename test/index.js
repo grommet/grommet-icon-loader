@@ -32,7 +32,7 @@ const CLASS_ROOT = 'control-icon';
 
 export default class Icon extends Component {
 	render () {
-		const { a11yTitleId, className, colorIndex, large } = this.props;
+		const { a11yTitleId, className, colorIndex } = this.props;
     let { a11yTitle, size } = this.props;
 
 	  const classes = classnames(
