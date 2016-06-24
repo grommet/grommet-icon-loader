@@ -27,8 +27,10 @@ let svgTargetBasic = `
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import FormattedMessage from 'grommet/components/FormattedMessage';
+import CSSClassnames from 'grommet/utils/CSSClassnames';
 
-const CLASS_ROOT = 'control-icon';
+const CLASS_ROOT = CSSClassnames.CONTROL_ICON;
+const COLOR_INDEX = CSSClassnames.COLOR_INDEX;
 
 export default class Icon extends Component {
 	render () {
@@ -41,7 +43,7 @@ export default class Icon extends Component {
 	    className,
 	    {
 	      [\`\${CLASS_ROOT}--\${size}\`]: size,
-	      [\`color-index-\${colorIndex}\`]: colorIndex
+	      [\`\${COLOR_INDEX}-\${colorIndex}\`]: colorIndex
 	    }
 	  );
 

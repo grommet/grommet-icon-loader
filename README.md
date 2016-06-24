@@ -45,7 +45,7 @@ var Icon = React.createClass({
   },
 
   render: function() {
-    var className = 'control-icon control-icon-github';
+    var className = 'grommetux-control-icon grommetux-control-icon-github';
     if (this.props.className) {
       className += ' ' + this.props.className;
     }
@@ -78,7 +78,7 @@ module.exports = Icon;
 + Only tags allowed by react are retrieved. Others are simply ignored
 + Order of the tags are maintained as it is
 + Width and Height are always 48px
-+ `control-icon control-icon-$fileName` class is added and overrides existing classes.
++ `grommetux-control-icon grommetux-control-icon-$fileName` class is added and overrides existing classes.
 + Accessibility configuration is added to your svg. Title will be added even if you don't have that in your original svg, as follows:
 
   ```
