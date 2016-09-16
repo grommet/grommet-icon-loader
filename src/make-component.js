@@ -16,7 +16,7 @@ const COLOR_INDEX = CSSClassnames.COLOR_INDEX;
 export default class Icon extends Component {
   render () {
     const { a11yTitleId, className, colorIndex } = this.props;
-    let { a11yTitle, size } = this.props;
+    let { a11yTitle, size, responsive } = this.props;
 
     const classes = classnames(
       CLASS_ROOT,
@@ -24,6 +24,7 @@ export default class Icon extends Component {
       className,
       {
         [\`\${CLASS_ROOT}--\${size}\`]: size,
+        [\`\${CLASS_ROOT}--responsive\`]: responsive,
         [\`\${COLOR_INDEX}-\${colorIndex}\`]: colorIndex
       }
     );
@@ -39,11 +40,13 @@ Icon.propTypes = {
   a11yTitle: PropTypes.string,
   a11yTitleId: PropTypes.string,
   colorIndex: PropTypes.string,
-  size: PropTypes.oneOf(['small', 'medium', 'large', 'xlarge', 'huge'])
+  size: PropTypes.oneOf(['small', 'medium', 'large', 'xlarge', 'huge']),
+  responsive: PropTypes.bool
 };
 
 Icon.defaultProps = {
-  a11yTitleId: '${resolve.fileName}-title'
+  a11yTitleId: '${resolve.fileName}-title',
+  responsive: true
 };
 
 Icon.icon = true;
