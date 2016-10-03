@@ -32,17 +32,10 @@ var IntlMixin = require('grommet/mixins/GrommetIntlMixin');
 var Icon = React.createClass({
 
   propTypes: {
-    a11yTitle: React.PropTypes.string,
-    a11yTitleId: React.PropTypes.string
+    a11yTitle: React.PropTypes.string
   },
 
   mixins: [IntlMixin],
-
-  getDefaultProps: function () {
-    return {
-      a11yTitleId: 'github-title'
-    };
-  },
 
   render: function() {
     var className = 'grommetux-control-icon grommetux-control-icon-github';
@@ -56,8 +49,8 @@ var Icon = React.createClass({
 
     return (
       <svg className={className} width="48px" height="48px"
-        viewBox="0 0 48 48" version="1.1" aria-labelledby={this.props.a11yTitleId}>
-        <title id={this.props.a11yTitleId}>{a11yTitle}</title>
+        viewBox="0 0 48 48" version="1.1" aria-label={a11yTitle}
+        role="img">
         ...
       </svg>
     );

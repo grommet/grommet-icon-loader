@@ -30,7 +30,7 @@ export default function(json, fileName, copyright, context) {
     svgAttributes.viewBox = json.svg.$.viewBox;
   }
 
-  svgAttributes['aria-labelledby'] = '{a11yTitleId}';
+  svgAttributes['aria-label'] = '{a11yTitle}';
 
   var root = builder.create('svg', xmldec, null, {
     headless: true
@@ -39,10 +39,6 @@ export default function(json, fileName, copyright, context) {
   Object.keys(svgAttributes).map(function(at) {
     root.att(at, svgAttributes[at]);
   });
-
-  root.ele('title', {
-    id: '{a11yTitleId}'
-  }, '{a11yTitle}');
 
   // for (var i in json.svg.$) root.att(i, json.svg.$[i]);
   traverse(json.svg.$$, root);
