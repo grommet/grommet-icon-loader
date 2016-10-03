@@ -26,8 +26,8 @@ let svgTargetBasic = `
 
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
-import FormattedMessage from 'grommet/components/FormattedMessage';
 import CSSClassnames from 'grommet/utils/CSSClassnames';
+import Intl from 'grommet/utils/Intl';
 
 const CLASS_ROOT = CSSClassnames.CONTROL_ICON;
 const COLOR_INDEX = CSSClassnames.COLOR_INDEX;
@@ -36,6 +36,7 @@ export default class Icon extends Component {
   render () {
     const { className, colorIndex } = this.props;
     let { a11yTitle, size, responsive } = this.props;
+    let { intl } = this.context;
 
     const classes = classnames(
       CLASS_ROOT,
@@ -48,11 +49,23 @@ export default class Icon extends Component {
       }
     );
 
-    a11yTitle = a11yTitle || <FormattedMessage id="add" defaultMessage="add" />;
+    a11yTitle = a11yTitle || Intl.getMessage(intl, 'add');
 
     return <svg version="1.1" viewBox="0 0 24 24" width="24px" height="24px" role="img" className={classes} aria-label={a11yTitle}><g id="add"><rect id="_x2E_svg_1_" x="0" fill="none" width="24" height="24"/><path fill="none" stroke="#000000" strokeWidth="2" strokeMiterlimit="10" d="M0,12h24 M12,24V0"/></g></svg>;
   }
 };
+
+Icon.contextTypes = {
+  intl: PropTypes.object
+};
+
+Icon.defaultProps = {
+  responsive: true
+};
+
+Icon.displayName = 'Add';
+
+Icon.icon = true;
 
 Icon.propTypes = {
   a11yTitle: PropTypes.string,
@@ -60,14 +73,6 @@ Icon.propTypes = {
   size: PropTypes.oneOf(['small', 'medium', 'large', 'xlarge', 'huge']),
   responsive: PropTypes.bool
 };
-
-Icon.defaultProps = {
-  responsive: true
-};
-
-Icon.icon = true;
-
-Icon.displayName = 'Add';
 
 `;
 

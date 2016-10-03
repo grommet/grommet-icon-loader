@@ -7,8 +7,8 @@ export default function(resolve) {
 
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
-import FormattedMessage from '${resolve.context}components/FormattedMessage';
 import CSSClassnames from '${resolve.context}utils/CSSClassnames';
+import Intl from '${resolve.context}utils/Intl';
 
 const CLASS_ROOT = CSSClassnames.CONTROL_ICON;
 const COLOR_INDEX = CSSClassnames.COLOR_INDEX;
@@ -17,6 +17,7 @@ export default class Icon extends Component {
   render () {
     const { className, colorIndex } = this.props;
     let { a11yTitle, size, responsive } = this.props;
+    let { intl } = this.context;
 
     const classes = classnames(
       CLASS_ROOT,
@@ -29,12 +30,23 @@ export default class Icon extends Component {
       }
     );
 
-    a11yTitle = a11yTitle ||
-      <FormattedMessage id="${resolve.fileName}" defaultMessage="${resolve.fileName}" />;
+    a11yTitle = a11yTitle || Intl.getMessage(intl, '${resolve.fileName}');
 
     return ${resolve.svg};
   }
 };
+
+Icon.contextTypes = {
+  intl: PropTypes.object
+};
+
+Icon.defaultProps = {
+  responsive: true
+};
+
+Icon.displayName = '${pascalCase(resolve.fileName)}';
+
+Icon.icon = true;
 
 Icon.propTypes = {
   a11yTitle: PropTypes.string,
@@ -42,14 +54,6 @@ Icon.propTypes = {
   size: PropTypes.oneOf(['small', 'medium', 'large', 'xlarge', 'huge']),
   responsive: PropTypes.bool
 };
-
-Icon.defaultProps = {
-  responsive: true
-};
-
-Icon.icon = true;
-
-Icon.displayName = '${pascalCase(resolve.fileName)}';
 
 `;
 
