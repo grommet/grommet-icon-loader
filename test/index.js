@@ -16,7 +16,7 @@ let svgSourceBasic = `
    viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
 <g id="add">
   <rect id="_x2E_svg_1_" x="0" fill="none" width="24" height="24"/>
-  <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M0,12h24 M12,24V0"/>
+  <path fill="#000000" d="M0,12h24 M12,24V0"/>
 </g>
 </svg>
 `;
@@ -51,7 +51,7 @@ export default class Icon extends Component {
 
     a11yTitle = a11yTitle || Intl.getMessage(intl, 'add');
 
-    return <svg version="1.1" viewBox="0 0 24 24" width="24px" height="24px" role="img" className={classes} aria-label={a11yTitle}><g id="add"><rect id="_x2E_svg_1_" x="0" fill="none" width="24" height="24"/><path fill="none" stroke="#000000" strokeWidth="2" strokeMiterlimit="10" d="M0,12h24 M12,24V0"/></g></svg>;
+    return <svg version="1.1" viewBox="0 0 24 24" width="24px" height="24px" role="img" className={classes} aria-label={a11yTitle}><g id="add"><rect id="_x2E_svg_1_" x="0" fill="none" width="24" height="24"/><path fill="#000000" d="M0,12h24 M12,24V0" stroke="none" /></g></svg>;
   }
 };
 
