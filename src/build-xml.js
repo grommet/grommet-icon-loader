@@ -22,6 +22,9 @@ function traverse(tags, root) {
     if (tags[i]['$'].fill && tags[i]['$'].fill !== 'none') {
       tags[i]['$'].stroke = 'none';
     }
+    if (tags[i]['$'].stroke && tags[i]['$'].stroke !== 'none') {
+      tags[i]['$'].fill = 'none';
+    }
     let item = root.ele(tags[i]['#name'], tags[i]['$']);
     if (tags[i].$$) traverse(tags[i].$$, item);
   }
