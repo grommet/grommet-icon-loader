@@ -50,7 +50,8 @@ export default function(json, fileName, copyright, context) {
   traverse(json.svg.$$, root);
 
   return {
-    svg: root.end().replace(/"{/g, '{').replace(/}"/g, '}'),
+    svg: root.end().replace(/"{/g, '{').replace(/}"/g, '}')
+      .replace('version="1.1"', '{...restProps} version="1.1"'),
     fileName: fileName,
     copyright: copyright ? '// ' + copyright : '',
     context: context || 'grommet/'

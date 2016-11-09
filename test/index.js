@@ -28,6 +28,7 @@ import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import CSSClassnames from 'grommet/utils/CSSClassnames';
 import Intl from 'grommet/utils/Intl';
+import Props from 'grommet/utils/Props';
 
 const CLASS_ROOT = CSSClassnames.CONTROL_ICON;
 const COLOR_INDEX = CSSClassnames.COLOR_INDEX;
@@ -50,8 +51,9 @@ export default class Icon extends Component {
     );
 
     a11yTitle = a11yTitle || Intl.getMessage(intl, 'add');
+    const restProps = Props.omit(this.props, Object.keys(Icon.propTypes));
 
-    return <svg version="1.1" viewBox="0 0 24 24" width="24px" height="24px" role="img" className={classes} aria-label={a11yTitle}><g id="add"><rect id="_x2E_svg_1_" x="0" fill="none" width="24" height="24"/><path fill="#000000" d="M0,12h24 M12,24V0" stroke="none" /></g></svg>;
+    return <svg {...restProps} version="1.1" viewBox="0 0 24 24" width="24px" height="24px" role="img" className={classes} aria-label={a11yTitle}><g id="add"><rect id="_x2E_svg_1_" x="0" fill="none" width="24" height="24"/><path fill="#000000" d="M0,12h24 M12,24V0" stroke="none" /></g></svg>;
   }
 };
 

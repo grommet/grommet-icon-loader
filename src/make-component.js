@@ -9,6 +9,7 @@ import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import CSSClassnames from '${resolve.context}utils/CSSClassnames';
 import Intl from '${resolve.context}utils/Intl';
+import Props from '${resolve.context}utils/Props';
 
 const CLASS_ROOT = CSSClassnames.CONTROL_ICON;
 const COLOR_INDEX = CSSClassnames.COLOR_INDEX;
@@ -32,6 +33,7 @@ export default class Icon extends Component {
 
     a11yTitle = a11yTitle || Intl.getMessage(intl, '${resolve.fileName}');
 
+    const restProps = Props.omit(this.props, Object.keys(Icon.propTypes));
     return ${resolve.svg};
   }
 };
