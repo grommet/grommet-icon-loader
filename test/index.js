@@ -24,7 +24,8 @@ let svgSourceBasic = `
 let svgTargetBasic = `
 // (C) Copyright 2014-2015 Hewlett Packard Enterprise Development LP
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import CSSClassnames from 'grommet/utils/CSSClassnames';
 import Intl from 'grommet/utils/Intl';

@@ -5,7 +5,8 @@ import pascalCase from 'pascal-case';
 export default function(resolve) {
   return `${resolve.copyright}
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import CSSClassnames from '${resolve.context}utils/CSSClassnames';
 import Intl from '${resolve.context}utils/Intl';

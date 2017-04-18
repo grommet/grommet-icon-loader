@@ -1,6 +1,6 @@
 {
   "name": "grommet-icon-loader",
-  "version": "0.3.5",
+  "version": "0.4.0",
   "description": "Loads svg icons as a react component in Grommet",
   "main": "lib/index.js",
   "scripts": {
